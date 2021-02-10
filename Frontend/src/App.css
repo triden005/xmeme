@@ -173,8 +173,8 @@
     background: #ffffff;
     border: 1px solid #d1d5da;
     list-style: none;
-    box-shadow: (0, 0, 0, 0.04) 0px 0px 0px 0.384492px inset,
-        rgba(12, 12, 13, 0.04) 0px 0.384492px 1.53797px 0px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px inset;
+    max-width: 350px;
 }
 @media (max-width: 768px) {
     /* .add-todo-section {
