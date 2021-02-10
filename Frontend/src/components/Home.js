@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import config from "../ipConfig.json";
+import config from "../ipConfig.js";
 import Form from "./Form";
 import MemeList from "./MemeList";
 import Header from "./Header";
 import Error from "./Error";
+
 var a;
 export default class Home extends Component {
     state = {

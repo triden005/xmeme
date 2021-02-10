@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import noimage from "./no-image.jpg";
+
 export default class Form extends Component {
     state = {
         name: "",
@@ -101,7 +103,7 @@ export default class Form extends Component {
                                             style={{ width: "100%" }}
                                             onError={(e) => {
                                                 e.target.onerror = null;
-                                                e.target.src = "https://picsum.photos/300";
+                                                e.target.src = `${noimage}`;
                                             }}
                                         />
                                     </div>
