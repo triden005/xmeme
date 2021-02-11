@@ -233,9 +233,9 @@
     max-height: 300px;
     border-radius: 10px;
     width: 100%;
-    width: -moz-available;
-    width: -webkit-fill-available;
-    width: stretch;
+    /* width: -moz-available;
+    width: -webkit-fill-available; */
+    /* width: stretch; */
     padding: 3px;
     margin: auto;
 }
