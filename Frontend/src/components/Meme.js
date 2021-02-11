@@ -110,7 +110,7 @@ export default class Meme extends Component {
                                 <img
                                     src={url}
                                     alt="Loading..."
-                                    style={{ width: "100%" }}
+                                    className="imageclass"
                                     onError={(e) => {
                                         e.target.onerror = null;
                                         e.target.src = `${noimage}`;

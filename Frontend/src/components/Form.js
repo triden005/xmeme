@@ -22,6 +22,7 @@ export default class Form extends Component {
             name: "",
             caption: "",
             url: "",
+            small: -1,
         });
     };
     onClose = (e) => {
@@ -61,6 +62,7 @@ export default class Form extends Component {
                                         name="name"
                                         value={name}
                                         onChange={this.handleInputChange}
+                                        required
                                     />
                                 </div>
 
@@ -72,6 +74,7 @@ export default class Form extends Component {
                                         name="url"
                                         value={url}
                                         onChange={this.handleInputChange}
+                                        required
                                     />
                                 </div>
                                 <div className="input-container">
@@ -82,6 +85,7 @@ export default class Form extends Component {
                                         name="caption"
                                         value={caption}
                                         onChange={this.handleInputChange}
+                                        required
                                     />
                                 </div>
                             </div>
