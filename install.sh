@@ -14,4 +14,6 @@ sudo systemctl start mongod ;
 
 sudo systemctl status mongod;
 
+mongo xmeme --eval "db.dropDatabase()";
+
 sudo systemctl enable mongod;

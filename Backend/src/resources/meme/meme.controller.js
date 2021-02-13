@@ -53,7 +53,7 @@ const createOne = async (req, res) => {
  * Gets a meme by id
  * curl -v -X "GET" http://localhost:8081/memes/<id-value>
  *
- * Nb: You'll need to change "<id-value>" to the "id" value of one of the meme items
+ * Nb: we'll change "<id-value>" to the "id" value of one of the meme items
  */
 const getOne = async (req, res) => {
     let Idtofind = req.params.id;
@@ -79,7 +79,7 @@ const getOne = async (req, res) => {
     -d '{"url": "https://www.google.com","caption": "caption"}' \
     -H 'Content-Type: application/json'
  *
- * Nb: You'll need to change "<id-value>" to the "id" value of one of the meme items
+ * Nb: we'll change "<id-value>" to the "id" value of one of the meme items
  */
 const updateOne = async (req, res) => {
     let Idtofind = req.params.id;
@@ -93,6 +93,9 @@ const updateOne = async (req, res) => {
 
     Meme.findByIdAndUpdate(Idtofind, updatedmeme).exec((err, doc) => {
         if (err) {
+            if (err.name === "MongoError" && err.code === 11000) {
+                return res.status(409).end();
+            }
             console.log(err);
             return res.status(500).end();
         }
@@ -106,7 +109,7 @@ const updateOne = async (req, res) => {
  * Delete a MEME from the db
  * curl -v -X "DELETE" http://localhost:8081/memes/<id-value>
  *
- * Nb: You'll need to change "<id-value>" to the "id" value of one of the meme items
+ * Nb: we'll change "<id-value>" to the "id" value of one of the meme items
  */
 const removeOne = async (req, res) => {
     let Idtodelete = req.params.id;

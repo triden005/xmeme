@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import config from "../ipConfig.js";
+import config from "../config/ipConfig";
 import Form from "./Form";
 import MemeList from "./MemeList";
 import Header from "./Header";
@@ -35,13 +35,13 @@ export default class Home extends Component {
         if (status === 404) {
             this.setState({ error: "Not found" });
         } else if (status === 409) {
-            this.setState({ error: "Dublicate Meme" });
+            this.setState({ error: "Dublicate Meme Found" });
         } else if (status === 400) {
             this.setState({ error: "Bad request" });
         } else if (status === 415) {
-            this.setState({ error: "UnSupported Media Query" });
+            this.setState({ error: "UnSupported Query" });
         } else {
-            this.setState({ error: "Something Bad Happend!" });
+            this.setState({ error: "Something Unexpected!" });
         }
         clearTimeout(a);
         a = setTimeout(() => {
@@ -69,12 +69,17 @@ export default class Home extends Component {
         await axios
             .patch(`${config.backendIp}/memes/${updatedmeme.id}`, updatedmeme)
             .then((res) => {
-                console.log("Updating In Frontend", res.data);
+                console.log(res.data);
+                this.setState({ memes: newArr });
+            })
+            .catch((err) => {
+                this.handelError(err.response.status);
+                this.performAPICall();
             });
-        this.setState({ memes: newArr });
     };
 
     performAPICall = async () => {
+        this.setState({ memes: [] });
         let memesData = [];
         await axios
             .get(`${config.backendIp}/memes`)
@@ -87,6 +92,9 @@ export default class Home extends Component {
                 for (let i = 0; i < memesData.length; i++) {
                     this.setState({ memes: [...this.state.memes, memesData[i]] });
                 }
+            })
+            .catch((err) => {
+                this.handelError(500);
             });
     };
 

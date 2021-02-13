@@ -22,7 +22,7 @@ export default class Form extends Component {
             name: "",
             caption: "",
             url: "",
-            small: -1,
+            small: 1,
         });
     };
     onClose = (e) => {
@@ -33,6 +33,7 @@ export default class Form extends Component {
             url: "",
             small: -this.state.small,
         });
+        document.querySelector("form").reset();
     };
     handleInputChange = (event) => {
         event.preventDefault();

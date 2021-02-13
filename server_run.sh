@@ -1,5 +1,5 @@
 #!/bin/bash
-cd src/backend
+cd Backend
 
-yarn install
-yarn start
+npm install
+npm start
